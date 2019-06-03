@@ -15,4 +15,8 @@ export class HerolistComponent implements OnInit {
   ngOnInit() {
   }
 
+  removeHero(heroIndex: number) {
+    this.myHeroes.splice(heroIndex, 1);
+  }
+
 }
