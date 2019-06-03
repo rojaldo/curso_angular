@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-
-enum State { Init, FirstFigure, SecondFigure, Result }
+import { CalculatorService } from 'src/app/services/calculator.service';
+export enum State { Init, FirstFigure, SecondFigure, Result }
 
 @Component({
   selector: 'app-keyboard',
@@ -9,44 +9,38 @@ enum State { Init, FirstFigure, SecondFigure, Result }
 })
 export class KeyboardComponent implements OnInit {
   @Output() signal = new EventEmitter<string>();
-  display = '';
-  currentState = State.Init;
-  firstFigure = 0;
-  secondFigure = 0;
-  result = 0;
-  operator = '';
 
-  constructor() { }
+  constructor(public service: CalculatorService) { }
 
   ngOnInit() {
   }
   handleNumber(num: number) {
     // this.display += num;
-    switch (this.currentState) {
+    switch (this.service.currentState) {
       case State.Init:
-        this.firstFigure = num;
-        this.currentState = State.FirstFigure;
-        this.display += num;
-        this.signal.emit(this.display);
+        this.service.firstFigure = num;
+        this.service.currentState = State.FirstFigure;
+        this.service.display += num;
+        this.signal.emit(this.service.display);
         break;
       case State.FirstFigure:
-        this.firstFigure = this.firstFigure * 10 + num;
-        this.display += num;
-        this.signal.emit(this.display);
+        this.service.firstFigure = this.service.firstFigure * 10 + num;
+        this.service.display += num;
+        this.signal.emit(this.service.display);
         break;
       case State.SecondFigure:
-        this.secondFigure = this.secondFigure * 10 + num;
-        this.display += num;
-        this.signal.emit(this.display);
+        this.service.secondFigure = this.service.secondFigure * 10 + num;
+        this.service.display += num;
+        this.signal.emit(this.service.display);
         break;
       case State.Result:
-        this.firstFigure = num;
-        this.secondFigure = 0;
-        this.result = 0;
-        this.operator = '';
-        this.display = '' + num;
-        this.signal.emit(this.display);
-        this.currentState = State.FirstFigure;
+        this.service.firstFigure = num;
+        this.service.secondFigure = 0;
+        this.service.result = 0;
+        this.service.operator = '';
+        this.service.display = '' + num;
+        this.signal.emit(this.service.display);
+        this.service.currentState = State.FirstFigure;
         break;
 
       default:
@@ -56,53 +50,37 @@ export class KeyboardComponent implements OnInit {
 
   handleSymbol(symbol: string) {
     // this.display += symbol;
-    switch (this.currentState) {
+    switch (this.service.currentState) {
       case State.Init:
 
         break;
       case State.FirstFigure:
         if (this.isOperator(symbol)) {
-          this.operator = symbol;
-          this.currentState = State.SecondFigure;
-          this.display += symbol;
-          this.signal.emit(this.display);
+          this.service.operator = symbol;
+          this.service.currentState = State.SecondFigure;
+          this.service.display += symbol;
+          this.signal.emit(this.service.display);
         }
         break;
       case State.SecondFigure:
         if (symbol === '=') {
-          this.result = this.resolve();
-          this.currentState = State.Result;
-          this.display += symbol + this.result;
-          this.signal.emit(this.display);
+          this.service.result = this.service.resolve();
+          this.service.currentState = State.Result;
+          this.service.display += symbol + this.service.result;
+          this.signal.emit(this.service.display);
         }
         break;
       case State.Result:
         if (this.isOperator(symbol)) {
-          this.firstFigure = this.result;
-          this.operator = symbol;
-          this.secondFigure = 0;
-          this.display = '' + this.result + symbol;
-          this.signal.emit(this.display);
-          this.result = 0;
-          this.currentState = State.SecondFigure;
+          this.service.firstFigure = this.service.result;
+          this.service.operator = symbol;
+          this.service.secondFigure = 0;
+          this.service.display = '' + this.service.result + symbol;
+          this.signal.emit(this.service.display);
+          this.service.result = 0;
+          this.service.currentState = State.SecondFigure;
         }
         break;
-
-      default:
-        break;
-    }
-  }
-
-  resolve(): number {
-    switch (this.operator) {
-      case '+':
-        return this.firstFigure + this.secondFigure;
-      case '-':
-        return this.firstFigure - this.secondFigure;
-      case '*':
-        return this.firstFigure * this.secondFigure;
-      case '/':
-        return this.firstFigure / this.secondFigure;
 
       default:
         break;
