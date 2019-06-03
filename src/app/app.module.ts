@@ -8,6 +8,7 @@ import { KeyboardComponent } from './components/keyboard/keyboard.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CalculatorService } from './services/calculator.service';
 import { HeroesComponent } from './components/heroes/heroes.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { HeroesComponent } from './components/heroes/heroes.component';
     HeroesComponent,
   ],
   imports: [
-    BrowserModule, NgbModule
+    BrowserModule, NgbModule, FormsModule
   ],
   providers: [CalculatorService],
   bootstrap: [AppComponent]
