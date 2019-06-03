@@ -16,6 +16,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { HeroService } from './services/hero.service';
 import { ApodService } from './services/apod.service';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
+import { BeersComponent } from './components/beers/beers.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
     HerolistComponent,
     HeroformComponent,
     ApodComponent,
+    BeersComponent,
   ],
   imports: [
     BrowserModule,
