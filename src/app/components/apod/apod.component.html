@@ -1,3 +1,23 @@
+<div class="container">
+  <h1 *ngIf="!resolved">Loading...</h1>
+  <div *ngIf="resolved">
+    <div class="jumbotron">
+      <ngb-datepicker [(ngModel)]="selectedDate" (select)="selectDate()"></ngb-datepicker>
+      <h1 class="display-3">{{result.title}}</h1>
+      <img [src]="result.url" alt="" width="100%" *ngIf="result.media_type === 'image'">
+      <youtube-player *ngIf="result.media_type === 'video'" [videoId]="youtubeParser(result.url)">
+      </youtube-player>
+      <p class="lead">{{result.explanation}}</p>
+      <hr class="my-2">
+      <p>{{result.date}}</p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" [href]="result.hdurl" role="button">Download image</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+
 <p>
   {{result | json}}
 </p>
