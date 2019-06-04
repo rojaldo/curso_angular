@@ -17,6 +17,7 @@ import { HeroService } from './services/hero.service';
 import { ApodService } from './services/apod.service';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { BeersComponent } from './components/beers/beers.component';
+import { AlcoholPipe } from './pipes/alcohol.pipe';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { BeersComponent } from './components/beers/beers.component';
     HeroformComponent,
     ApodComponent,
     BeersComponent,
+    AlcoholPipe,
   ],
   imports: [
     BrowserModule,
