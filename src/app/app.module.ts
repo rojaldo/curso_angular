@@ -21,8 +21,13 @@ import { AlcoholPipe } from './pipes/alcohol.pipe';
 import { Ng5SliderModule } from 'ng5-slider';
 import {NgPipesModule} from 'ngx-pipes';
 import { FormComponent } from './components/form/form.component';
+import {UIRouterModule} from "@uirouter/angular";
 
-
+const formState = { name: 'form', url: '/form',  component: FormComponent };
+const beersState = { name: 'beers', url: '/beers',  component: BeersComponent };
+const apodState = { name: 'apod', url: '/apod',  component: ApodComponent };
+const heroesState = { name: 'heroes', url: '/heroes',  component: HeroesComponent };
+const Calculator = { name: 'calculator', url: '/calculator',  component: CalculatorComponent };
 
 @NgModule({
   declarations: [
@@ -45,7 +50,8 @@ import { FormComponent } from './components/form/form.component';
     HttpClientModule,
     NgxYoutubePlayerModule.forRoot(),
     Ng5SliderModule,
-    NgPipesModule
+    NgPipesModule,
+    UIRouterModule.forRoot({ states: [ formState, beersState, apodState, heroesState, Calculator ], useHash: true })
   ],
   providers: [CalculatorService, HeroService, ApodService],
   bootstrap: [AppComponent]

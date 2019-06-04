@@ -1,28 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<ngb-tabset type="tabs">
-    <ngb-tab title="Form">
-        <ng-template ngbTabContent>
-            <app-form></app-form>
-        </ng-template>
-    </ngb-tab>
-    <ngb-tab title="Beers">
-        <ng-template ngbTabContent>
-            <app-beers></app-beers>
-        </ng-template>
-    </ngb-tab>
-    <ngb-tab title="Apod">
-        <ng-template ngbTabContent>
-            <app-apod></app-apod>
-        </ng-template>
-    </ngb-tab>
-    <ngb-tab title="Hero list">
-        <ng-template ngbTabContent>
-            <app-heroes></app-heroes>
-        </ng-template>
-    </ngb-tab>
-    <ngb-tab title="Calculator">
-        <ng-template ngbTabContent>
-            <app-calculator></app-calculator>
-        </ng-template>
-    </ngb-tab>
-</ngb-tabset>
+<a uiSref="form" uiSrefActive="active">Forms </a>
+<a uiSref="beers" uiSrefActive="active">Beers </a>
+<a uiSref="apod" uiSrefActive="active">Apod </a>
+<a uiSref="heroes" uiSrefActive="active">Heroes </a>
+<a uiSref="calculator" uiSrefActive="active">Calculator</a>
+  
+  <ui-view></ui-view>
+
