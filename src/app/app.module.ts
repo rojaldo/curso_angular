@@ -20,6 +20,7 @@ import { BeersComponent } from './components/beers/beers.component';
 import { AlcoholPipe } from './pipes/alcohol.pipe';
 import { Ng5SliderModule } from 'ng5-slider';
 import {NgPipesModule} from 'ngx-pipes';
+import { FormComponent } from './components/form/form.component';
 
 
 
@@ -35,6 +36,7 @@ import {NgPipesModule} from 'ngx-pipes';
     ApodComponent,
     BeersComponent,
     AlcoholPipe,
+    FormComponent,
   ],
   imports: [
     BrowserModule,
