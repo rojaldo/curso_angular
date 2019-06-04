@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title" [innerHTML]="card.question"></h4>
+    <div *ngIf="!card.responded">
+      <button type="button" name="" id="" class="btn btn-primary btn-block"
+        *ngFor="let answer of card.answers; let i=index" [innerHTML]="answer" (click)="handleClick(i)"></button>
+    </div>
+    <div *ngIf="card.responded">
+        <button type="button" name="" id="" [class]="getClass(i)"
+        *ngFor="let answer of card.answers; let i=index" [innerHTML]="answer" disabled></button>
+    </div>
+  </div>
+</div>

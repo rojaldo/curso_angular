@@ -1,0 +1,13 @@
+<div class="container" *ngIf="responded">
+  
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" *ngFor="let card of cards">
+      <app-card [card]="card"></app-card>
+    </div>
+  </div>
+  
+</div>
+
+<p>
+  {{result | json}}
+</p>
