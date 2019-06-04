@@ -1,7 +1,7 @@
 <div class="container">
   <ng5-slider class="mb-5 mt-5" (userChange)="handleChange()" [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" *ngFor="let beer of myBeers">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" *ngFor="let beer of myBeers | orderBy: 'abv'">
       <div class="card">
         <div class="container-fluid text-center">
           <img class="card-img-top" [src]="beer.image_url" style="width: 50px" alt="">
