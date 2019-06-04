@@ -18,6 +18,8 @@ import { ApodService } from './services/apod.service';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { BeersComponent } from './components/beers/beers.component';
 import { AlcoholPipe } from './pipes/alcohol.pipe';
+import { Ng5SliderModule } from 'ng5-slider';
+
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { AlcoholPipe } from './pipes/alcohol.pipe';
     NgbModule,
     FormsModule,
     HttpClientModule,
-    NgxYoutubePlayerModule.forRoot()
+    NgxYoutubePlayerModule.forRoot(),
+    Ng5SliderModule
   ],
   providers: [CalculatorService, HeroService, ApodService],
   bootstrap: [AppComponent]
